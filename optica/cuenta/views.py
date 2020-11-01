@@ -1,3 +1,8 @@
 from django.shortcuts import render
 
-# Create your views here.
+# Vistas.
+def home(request):
+    context = {
+        'title':'Óptica Marfull'
+    }
+    return render(request, 'cuenta\home.html', context)

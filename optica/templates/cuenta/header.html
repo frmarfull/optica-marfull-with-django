@@ -1,0 +1,25 @@
+<!-- Barra de navegación -->
+<header>
+    <nav class="nav-wrapper grey darken-4">
+            <ul class="left">
+            <img class="logo" src="./asset/img/glasses-icon-62px.png">
+            <a onclick="mostrar()" class="brand-logo hoverable hide-on-small-only">Óptica-Marfull.cl</a>
+          </ul>
+            <ul class="right">
+                <!-- Gatillador del efecto "Dropdown". -->
+                <a class='dropdown-trigger btn light-blue darken-4 hide-on-med-and-down' data-target='dropdown1'>Sobre los despachos</a>
+                <a class='dropdown-trigger btn light-blue darken-4 hide-on-large-only' data-target='dropdown1'><i class="material-icons">local_shipping</i></a>
+                <!-- Cada uno de los sub-menús con las opciones de despacho. -->
+                <ul id='dropdown1' class="dropdown-content">
+                    <li><a class="black-text" onclick='ver("consultar")'>Consultar despacho</a></li>
+                    <li><a class="black-text" onclick='ver("solicitar")'>Solicitar despacho</a></li>
+                    <li><a class="black-text" onclick='ver("modificar")'>Modificar datos de despacho</a></li>
+                    <li><a class="black-text" onclick='ver("cancelar")'>Cancelar mi despacho</a></li>
+                </ul>
+                <a class="tooltipped btn light-blue darken-4 white-text hide" href="https://www.google.com/maps/d/edit?mid=1tIuu_DE0SZ5D9vtdBQfyac6hM3p4S407&usp=sharing" data-position="bottom" data-tooltip="¡Encuéntranos!">
+                    <i class="material-icons">location_on</i></a>
+                <a class="tooltipped btn-floating pulse blue darken-1" href="tel:56978129471" data-position="bottom" data-tooltip="Call Center: +56 9 7812 9471">
+                    <i class="material-icons">local_phone</i></a>
+            </ul>
+    </nav>
+</header>
