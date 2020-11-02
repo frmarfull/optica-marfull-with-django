@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'cuenta'
+    'cuenta',
+    'producto'
 ]
 
 MIDDLEWARE = [
@@ -83,8 +84,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'optica',
         'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': '127.0.0.1',
+        'PASSWORD': '1234',
+        'HOST': 'localhost',
         'PORT': 3306,
     }
 }
