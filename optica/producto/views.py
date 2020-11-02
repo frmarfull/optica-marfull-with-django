@@ -1,8 +1,24 @@
 from django.shortcuts import render, redirect
 from .forms import FormProducto
 from django.contrib import messages
+from .models import Producto
 
 # Create your views here.
+
+def listarProductos(request):
+    productos = Producto.objects.all()
+    context = {
+        'titulo':'Listar productos',
+        'productos':productos
+    }
+    return render(
+        request,
+        'listar_producto.html',
+        context
+    )
+
+
+
 
 def agregarProducto(request):
     formulario= FormProducto()
@@ -15,12 +31,40 @@ def agregarProducto(request):
                 messages.SUCCESS,
                 'producto agregado'
             )
-            return redirect('/home/')
+            return redirect('/productos/listar')
     context = {
         'formulario':formulario
     }
     return render(
         request,
         'agregar.html',
+        context
+    )
+
+def eliminarProducto(request, id_producto):
+    productoEncontrado = Producto.objects.get(pk=id_producto)
+    productoEncontrado.delete()
+
+    return redirect('/productos/listar/')
+
+def editarProducto(request,id_producto):
+    productoEncontrado = Producto.objects.get(pk = id_producto)
+    formulario = None
+
+    if request.method == 'POST':
+        formulario = FormProducto(request.POST,request.FILES, instance= productoEncontrado)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect('/productos/listar')
+    else:
+        formulario = FormProducto(instance= productoEncontrado)
+    context = {
+        'titulo':'Modificar producto',
+        'formulario':formulario
+    }
+
+    return render(
+        request,
+        'modificar_producto.html',
         context
     )

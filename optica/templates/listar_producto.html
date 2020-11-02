@@ -1,0 +1,37 @@
+{% load static %}
+{% block main %}
+    <h1>Listar productos....</h1>
+    <a href="/productos/agregar/">Agregar nuevo producto....</a>
+    {% if productos %}
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre lentes</th>
+                <th>Codigo</th>
+                <th>Precio</th>
+                <th>Imagen</th>
+                <th>acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for producto in productos %}
+                <tr>
+                    <td>{{ producto.id }}</td>
+                    <td>{{ producto.nombreLente }}</td>
+                    <td>{{ producto.codLente }}</td>
+                    <td>{{ producto.precioLente }}</td>
+                    <td><img src="/media/{{ producto.imagenLente }}"></td>
+                    <td>
+                        <a href="/productos/modificar/{{ producto.id }}">editar</a>
+                        <a href="/productos/eliminar/{{ producto.id }}">Eliminar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+        
+    {% else %}
+        <p>No hay productos....</p>
+    {% endif %}
+{% endblock main %}
