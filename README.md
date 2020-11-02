@@ -27,7 +27,7 @@ python manage.py runserver		# Arrancar el proyecto.
 ```
 3. En un navegador (Google Chrome, Mozilla Firefox, Opera, Edge, etc), ir a `http://127.0.0.1:8000/` para acceder al proyecto.
 
-------------
+------------.
 ### Pantallazos.
 
 ![](https://raw.githubusercontent.com/frmarfull/optica-marfull-with-django/master/Screenshots/Index.png)
