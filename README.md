@@ -12,7 +12,7 @@ Sistema de gestión de cuentas e inventario de una óptica usando Django.
 - Utiliza MySQL para la base de datos.
 
 ------------
-### Instalación
+### Instalación.
 Cómo arrancar el servidor y acceder al sitio web.
                 
 1. Instalar `git` & `python3` en su sistema operativo.
