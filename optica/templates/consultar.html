@@ -1,0 +1,33 @@
+<!-- Consultar -->
+<section class="container section" id="consultar">
+    <h4>Consulta el estado del despacho.</h4>
+    <div>
+      <form id="formrut">
+          <input type="text" autocomplete="off" id="rut" name="rut" required oninput="checkRut(this)" placeholder="Ingrese RUT">
+          <button class="btn" type="submit">Validar Run y enviar</button>
+      </form>
+    </div>
+    <div>
+        <table id="tablarut" class="striped hide">
+    <thead>
+    <!-- Nombre de cada columna -->
+            <tr>
+                <th>N°</th>
+                <th>cod</th>
+                <th>Producto</th>
+                <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Región</th>
+      <th>calle</th>
+      <th>Comuna</th>
+      <th>N°/depa</th>
+      <th>Precio</th>
+            </tr>
+  </thead>
+  <!-- Datos de la tabla -->
+          <tbody id="datosTablaRut">
+          </tbody>
+        </table>
+    </div>
+  </Section>
+  
