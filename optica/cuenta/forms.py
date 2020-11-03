@@ -1,9 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth.models import User
 from django import forms
-from .models import Usuario,Direccion
-
-
+from .models import Perfil
 
 class FormIniciarSesion(AuthenticationForm):
     def __init__(self,*args,**kwargs):
@@ -30,5 +28,6 @@ class FormularioPerfil(forms.ModelForm):
         for campoVisible in self.visible_fields():
             campoVisible.field.widget.attrs['class'] = 'form-control'
     class Meta:
-        model = Direccion
-        fields = ('region','comuna','calle')
+        model = Perfil
+        fields = ('rut','region','comuna','calle','departamento')
+    

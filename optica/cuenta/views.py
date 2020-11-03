@@ -1,17 +1,11 @@
-from django.shortcuts import render
 from django.shortcuts import render, redirect
 from .forms import FormularioCreacion, FormularioPerfil,FormIniciarSesion
 from django.contrib import messages
 from django.contrib.auth import login, logout, authenticate
-# Vistas.
 def home(request):
-    context = {
-        'title':'Óptica Marfull'
-    }
-    return render(request, 'cuenta\home.html', context)
+    pass
 
-
-
+# Create your views here.
 def mostarFormularioRegistro(request):
     formulario1 = FormularioCreacion()
     formulario2 = FormularioPerfil()
@@ -24,6 +18,7 @@ def mostarFormularioRegistro(request):
         'registrar.html',
         context
     )
+
 def registroUsuario(request):
     if request.method == 'POST':
         formulario1 = FormularioCreacion(request.POST)
@@ -33,6 +28,7 @@ def registroUsuario(request):
             perfilGuardado = formulario2.save(commit=False)
             perfilGuardado.usuario = usuarioGuardado
             perfilGuardado.save()
+            print(perfilGuardado)
             messages.add_message(request,
                 messages.SUCCESS,
                 'Usuario registrado con éxito :D'
@@ -54,3 +50,38 @@ def registroUsuario(request):
             'No puedes estar aquí'
         )
         return redirect('/registro/')
+
+def iniciarSesion(request):
+    formulario = FormIniciarSesion()
+    if request.method == 'POST':
+        formulario = FormIniciarSesion(data=request.POST)
+        if formulario.is_valid():
+            username = formulario.cleaned_data['username']
+            password = formulario.cleaned_data['password']
+            usuarioLogeado = authenticate(username=username,password=password)
+            if usuarioLogeado is not None:
+                login(request,usuarioLogeado)
+                if usuarioLogeado.is_superuser:
+                    pass
+                    #Redireccion a pagina admin
+                else:
+                    pass
+                    #Redireccion a pagina normal
+                return redirect('/inicio/')
+            else:
+                messages.add_message(
+                    request,
+                    messages.INFO,
+                    'Usuario o contraseña son incorrectos'
+                )
+    context = {
+        'formulario':formulario
+    }
+    return render(
+        request,
+        'iniciar_sesion.html',
+        context)
+
+def salir(request):
+    logout(request)
+    return redirect('/inicio/')
