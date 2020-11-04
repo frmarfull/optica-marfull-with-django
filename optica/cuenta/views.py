@@ -67,7 +67,7 @@ def iniciarSesion(request):
                 else:
                     pass
                     #Redireccion a pagina normal
-                return redirect('/inicio/')
+                return redirect('/')
             else:
                 messages.add_message(
                     request,

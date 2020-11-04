@@ -1,33 +1,47 @@
-<!-- Consultar -->
-<section class="container section" id="consultar">
-    <h4>Consulta el estado del despacho.</h4>
-    <div>
-      <form id="formrut">
-          <input type="text" autocomplete="off" id="rut" name="rut" required oninput="checkRut(this)" placeholder="Ingrese RUT">
-          <button class="btn" type="submit">Validar Run y enviar</button>
-      </form>
-    </div>
-    <div>
-        <table id="tablarut" class="striped hide">
-    <thead>
-    <!-- Nombre de cada columna -->
-            <tr>
-                <th>N°</th>
-                <th>cod</th>
-                <th>Producto</th>
-                <th>Nombre</th>
-      <th>Apellido</th>
-      <th>Región</th>
-      <th>calle</th>
-      <th>Comuna</th>
-      <th>N°/depa</th>
-      <th>Precio</th>
-            </tr>
-  </thead>
-  <!-- Datos de la tabla -->
-          <tbody id="datosTablaRut">
-          </tbody>
-        </table>
-    </div>
-  </Section>
+  {% include 'cuenta/base.html' %}
+  {% load static %}
   
+  
+  {% block main %}
+      <h1>Listar productos....</h1>
+      <a href="/productos/agregar/" style="background-color: #4CAF50; /* Green */
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;">Agregar nuevo producto....</a>
+      {% if pedidos %}
+      <table>
+          <thead>
+              <tr>
+                  <th>rut</th>
+                  <th>Nombre lentes</th>
+                  <th>Codigo</th>
+                  <th>Precio</th>
+                  <th>calle</th>
+                  <th>acción</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for pedido in pedidos %}
+                  <tr>
+                      <td>{{ pedido.perfil.rut }}</td>
+                      <td>{{ pedido.producto.codLente }}</td>
+                      <td>{{ pedido.perfil.first_name }}</td>
+                      <td>{{ pedido.perfil.last_name }}</td>
+                      
+                      <td>
+                          <a href="/productos/modificar/{{ producto.id }}">editar</a>
+                          <a href="/productos/eliminar/{{ producto.id }}">Eliminar</a>
+                      </td>
+                  </tr>
+              {% endfor %}
+          </tbody>
+      </table>
+          
+      {% else %}
+          <p>No hay productos....</p>
+      {% endif %}
+  {% endblock main %}
