@@ -22,5 +22,22 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="./asset/js/script.js"></script>
+<script >document.addEventListener('DOMContentLoaded', function() {
+    //El carrusel de Materialize.
+    var elems = document.querySelectorAll('.carousel');
+    var instances = M.Carousel.init(elems);
+    //Mensaje que ayuda.
+    var elems = document.querySelectorAll('.tooltipped');
+    var instances = M.Tooltip.init(elems);
+    //Dropdown buttons, en español es un cajón de botones.
+    var elems = document.querySelectorAll('.dropdown-trigger');
+    var instances = M.Dropdown.init(elems, {hover:true});
+    //Efecto Materialboxed (La imagen se agranda, en fondo se obscurece).
+    var elems = document.querySelectorAll('.materialboxed');
+    var instances = M.Materialbox.init(elems);
+    //Modal, un elemento similar al alert();
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems);
+});</script>
 </body>
 </html>

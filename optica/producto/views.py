@@ -2,9 +2,10 @@ from django.shortcuts import render, redirect
 from .forms import FormProducto
 from django.contrib import messages
 from .models import Producto
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-
+@login_required(login_url='/iniciarSesion/')
 def listarProductos(request):
     productos = Producto.objects.all()
     context = {
@@ -31,7 +32,7 @@ def listadoCatalogo(request):
     )
 
 
-
+@login_required(login_url='/iniciarSesion/')
 def agregarProducto(request):
     formulario= FormProducto()
     if request.method =='POST':
@@ -52,7 +53,7 @@ def agregarProducto(request):
         'agregar.html',
         context
     )
-
+@login_required(login_url='/iniciarSesion/')
 def eliminarProducto(request, id_producto):
     productoEncontrado = Producto.objects.get(pk=id_producto)
     productoEncontrado.delete()

@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from .forms import FormularioCreacion, FormularioPerfil,FormIniciarSesion
 from django.contrib import messages
 from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.decorators import login_required
+
 def home(request):
     return render(request, 'cuenta/home.html')
     
@@ -81,10 +83,6 @@ def iniciarSesion(request):
         request,
         'iniciar_sesion.html',
         context)
-
-def salir(request):
-    logout(request)
-    return redirect('/inicio/') 
    
 def agregar(request):
     return render(request,'agregar.html')
@@ -104,6 +102,7 @@ def modificar_producto(request):
                                                                                                                                                         
 def solicitar(request): 
     return render(request,'solicitar.html')
+
 
 def salir(request):
     logout(request)
