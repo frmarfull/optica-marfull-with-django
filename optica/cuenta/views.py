@@ -92,8 +92,6 @@ def agregar(request):
 def cancelar(request):
     return render(request,'cancelar.html')
     
-def catalogo(request):
-    return render(request,'catalogo.html')
     
 def consultar(request):
     return render(request,'consultar.html')
@@ -107,4 +105,7 @@ def modificar_producto(request):
 def solicitar(request): 
     return render(request,'solicitar.html')
 
+def salir(request):
+    logout(request)
+    return redirect('/iniciarSesion/')
 

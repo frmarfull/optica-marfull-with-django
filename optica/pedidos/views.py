@@ -10,7 +10,7 @@ def listarPedidos(request):
         'titulo':'Listar pedidos',
         'pedidos':pedidos
     }
-    print('esto es el dato',pedidos)
+    
     return render(
         request,
         'consultar.html',

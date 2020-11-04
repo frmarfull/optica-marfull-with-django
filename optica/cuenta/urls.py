@@ -9,11 +9,12 @@ urlpatterns = [
 
     path('agregar/',agregar,name='agregar'),
     path('cancelar/',cancelar, name="cancelar"),
-    path('catalogo/',catalogo,name='catalogo'),             
+               
     path('consultar/',consultar, name="consultar"),    
     path('listar_producto/',listar_producto,name='listar_producto'),
     path('modificar_producto/',modificar_producto, name="modificar_producto"),
     path('solicitar/',solicitar, name="solicitar"),
+    path('salir/',salir,name="Salir")
     #path('/',, name=""), ejemplo #
    
     

@@ -16,7 +16,19 @@ def listarProductos(request):
         'listar_producto.html',
         context
     )
-
+def listadoCatalogo(request):
+    productos = Producto.objects.all()
+    context = {
+        'titulo':'Catalogo',
+        'productos':productos
+    }
+    for producto in productos:
+        print(producto.codLente)
+    return render(
+        request,
+        'catalogo.html',
+        context
+    )
 
 
 
@@ -68,3 +80,6 @@ def editarProducto(request,id_producto):
         'modificar_producto.html',
         context
     )
+
+def catalogo(request):
+    return render(request,'catalogo.html')

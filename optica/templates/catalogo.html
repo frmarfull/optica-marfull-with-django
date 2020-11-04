@@ -1,125 +1,31 @@
-{% include 'cuenta/base.html' %}
-{% block content %}    
-<!-- Catálogo -->
-<section class="container section" id="catalogo">
-    <h1 class="center">Catálogo.</h1>
-    <div>
-      <!-- Cards del Materialize para enseñar los productos al cliente. -->
-      <div class="row">
-        <div class="col s12 m3">
-          <div class="card hoverable">
+{% extends 'cuenta/base.html' %}
+{% load static %}
+{% block content %}
+<section >
+
+    {% if productos %}
+    {% for producto in productos %}
+    <div class="row">
+      <div class="col s12 m7">
+        <div class="card">
           <div class="card-image">
-            <img class="responsive-img materialboxed"src="./asset/img/marco001a_512x512.png">
+            <img src="/media/{{ producto.imagenLente }}">
+            <span class="card-title"></span>
           </div>
-          <div id="info001" class="card-content">
-            <p class="desc">Armazón "Enzzo"</p>
-            <p>cod: <span class="cod">ABC1.</span></p>
-            <p class="precio">$50.000</p>
-          </div>
-          <div class="card-action">
-            <a class="modal-trigger" id="btnComprar001" href="#modal1">Comprar</a>				  
-            <!-- Mensaje del elemento "Modal" -->
-            <div id="modal1" class="modal">
-            <div class="modal-content">
-              <h4>¡Solicita tu despacho!</h4>
-              <p>Un producto fue agregado a la lista de despacho.</p>
-              <p>Diríjase a la sección de solicitud de despacho para confirmar.</p>
-              <p>Debes buscar la opción <b>¡Solicitar despacho!</b></p>
-              <br>
-              <p>Nota: El panel de despacho también permite anular la compra.</p>
-            </div>
-            <div class="modal-footer">
-              <a href="#!" class="modal-close waves-effect waves-green btn-flat">Continuar</a>
-            </div>
-          </div>
-          </div>
-        </div>
-        </div>
-        <!--Ahora más stock!-->
-        <div >
-          <div class="col s12 m3">
-            <div class="card hoverable">
-            <div class="card-image">
-              <img class="responsive-img materialboxed"src="https://cms.hostprimario.com/upload//master-opticos/fotos/lentes/63/63_20131129131321_grande.png">
-            </div>
-            <div id="info004" class="card-content">
-              <p class="desc">Marco "Alarcón"</p>
-              <p>cod: <span class="cod">ABC4.</span></p>
-              <p class="precio">$75.000</p>
-            </div>
-            <div class="card-action">
-              <a class="modal-trigger" id="btnComprar004" href="#modal1">Comprar</a>	
-            </div>
-    
-            </div>
-            </div>
-
-            <div class="col s12 m3" >
-              <div class="card hoverable">
-              <div class="card-image">
-                <img class="responsive-img materialboxed"src="data:image/jpeg;base64,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">
-              </div>
-              <div id="info005" class="card-content">
-                <p class="desc">Marco "Kalak"</p>
-                <p>cod: <span class="cod">ABC5.</span></p>
-                <p class="precio">$150.000</p>
-              </div>
-              <div class="card-action">
-                <a class="modal-trigger" id="btnComprar005" href="#modal1">Comprar</a>	
-              </div>
-      
-              </div>
-              </div>
+          <div class="card-content">
+            <p>Nombre Lente: {{ producto.nombreLente }}</p>
+            <p>Codigo Lente: {{ producto.codLente }}</p>
+            <p>Precio Lente: {{ producto.precioLente }}</p>
             
-              <div class="col s12 m3">
-                <div class="card hoverable">
-                <div class="card-image">
-                  <img class="responsive-img materialboxed"src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRwvDcX2NJoKWXJYz-3uM-bY5dbnj2BlzlD_g&usqp=CAU">
-                </div>
-                <div id="info006" class="card-content">
-                  <p class="desc">Marco "Neira"</p>
-                  <p>cod: <span class="cod">ABC6.</span></p>
-                  <p class="precio">$51.000</p>
-                </div>
-                <div class="card-action">
-                  <a class="modal-trigger" id="btnComprar006" href="#modal1">Comprar</a>	
-                </div>
-        
-                </div>
-                </div>
-
-                <div class="col s12 m3">
-                  <div class="card hoverable">
-                  <div class="card-image">
-                    <img class="responsive-img materialboxed"src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ2SmRnM8SSZEh5hsmdBZFojFaO2rIFCBTq3w&usqp=CAU">
-                  </div>
-                  <div id="info007" class="card-content">
-                    <p class="desc">Marco "Zamorano"</p>
-                    <p>cod: <span class="cod">ABC7.</span></p>
-                    <p class="precio">$70.000</p>
-                  </div>
-                  <div class="card-action">
-                    <a class="modal-trigger" id="btnComprar007" href="#modal1">Comprar</a>	
-                  </div>
+          </div>
           
-                  </div>
-                  </div>
-
-                  <div class="col s12 m3">
-                    <div class="card hoverable">
-                    <div class="card-image">
-                      <img class="responsive-img materialboxed"src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRVfUvq4SRnhWXODKvFm3jdU6Neb75kev6yhDXdqPi5raGYsnChht3Ll8UhXJsOa_J90QJ64TA&usqp=CAc">
-                    </div>
-                    <div id="info008" class="card-content">
-                      <p class="desc">Marco "Paz"</p>
-                      <p>cod: <span class="cod">ABC8.</span></p>
-                      <p class="precio">$58.000</p>
-                    </div>
-                    <div class="card-action">
-                      <a class="modal-trigger" id="btnComprar008" href="#modal1">Comprar</a>	
-                    </div>
-
+          <div class="card-action">
+            <a href="#">Comprar</a>
+          </div>
+        </div>
+      </div>
     </div>
-    </div>
-  </Section>
-  {% endblock content %}  
+    {% endfor %}
+    {% endif  %}
+</section>
+{% endblock content %}
