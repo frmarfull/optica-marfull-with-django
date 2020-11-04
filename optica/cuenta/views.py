@@ -3,9 +3,9 @@ from .forms import FormularioCreacion, FormularioPerfil,FormIniciarSesion
 from django.contrib import messages
 from django.contrib.auth import login, logout, authenticate
 def home(request):
-    pass
-
-# Create your views here.
+    return render(request, 'cuenta/home.html')
+    
+    # Create your views here.
 def mostarFormularioRegistro(request):
     formulario1 = FormularioCreacion()
     formulario2 = FormularioPerfil()
@@ -84,4 +84,27 @@ def iniciarSesion(request):
 
 def salir(request):
     logout(request)
-    return redirect('/inicio/')
+    return redirect('/inicio/') 
+   
+def agregar(request):
+    return render(request,'agregar.html')
+
+def cancelar(request):
+    return render(request,'cancelar.html')
+    
+def catalogo(request):
+    return render(request,'catalogo.html')
+    
+def consultar(request):
+    return render(request,'consultar.html')
+                                                                                                                                                    
+def listar_producto(request):
+    return render(request,'listar_producto.html')
+                                                                                                                                                        
+def modificar_producto(request):
+    return render(request,'modificar_producto.html')
+                                                                                                                                                        
+def solicitar(request): 
+    return render(request,'solicitar.html')
+
+
