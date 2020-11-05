@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from .forms import FormPedido
-from .models import Pedido
+from .models import Pedido, Perfil,User
 from django.contrib.auth.decorators import login_required
 from producto.models import Producto
 from django.contrib import messages
@@ -21,8 +21,25 @@ def listarPedidos(request):
     )
 @login_required(login_url='iniciarSesion')
 def agregarPedidos(request,id_producto):
-    pass
-                
+    print(id_producto)
+    elproducto= Producto.objects.get(pk=id_producto)
+    elusuario = User.objects.get(pk=request.user.id)
+    elperfil = Perfil.objects.get(usuario=elusuario)
+    Pedido.objects.create(producto=elproducto,perfil=elperfil)
+    
+    # pedido.save()
+    return redirect(
+        '/pedidos/pedidos/'
+    )
+
+@login_required(login_url='iniciarSesion')
+def eliminarPedido(request, id_pedido):
+        pedidoEncontrado = Pedido.objects.get(pk=id_pedido)
+        pedidoEncontrado.delete()
+
+        return redirect('/pedidos/pedidos')
+    
+
             
 
 
