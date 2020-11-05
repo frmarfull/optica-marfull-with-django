@@ -8,7 +8,8 @@ from django.contrib import messages
 
 @login_required(login_url='iniciarSesion')
 def listarPedidos(request):
-    pedidos= Pedido.objects.all
+    pedidos= Pedido.objects.all().filter(perfil=(request.user.id)-1)
+    print(request.user.id)
     context = {
         'titulo':'Listar pedidos',
         'pedidos':pedidos
