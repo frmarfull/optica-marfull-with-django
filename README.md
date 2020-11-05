@@ -9,6 +9,7 @@ Sistema de gestión de cuentas e inventario de una óptica usando Django.
 
 - Página principal interactiva, intuitiva y amigable.
 - Gestiona la venta de los productos.
+- Utiliza el Framework Django
 - Utiliza MySQL para la base de datos.
 
 ------------
