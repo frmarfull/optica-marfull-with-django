@@ -8,33 +8,48 @@ from django.contrib import messages
 
 @login_required(login_url='iniciarSesion')
 def listarPedidos(request):
-    pedidos= Pedido.objects.all().filter(perfil=(request.user.id)-1)
-    print(request.user.id)
-    context = {
-        'titulo':'Listar pedidos',
-        'pedidos':pedidos
-    }
-    
-    return render(
-        request,
-        'consultar.html',
-        context
-    )
+    if request.user.is_superuser:    
+        return redirect(
+            '/'
+        )
+    else:    
+        pedidos= Pedido.objects.all().filter(perfil=(request.user.id)-1)
+        print(request.user.id)
+        context = {
+            'titulo':'Listar pedidos',
+            'pedidos':pedidos
+        }
+        
+        return render(
+            request,
+            'consultar.html',
+            context
+        )
 @login_required(login_url='iniciarSesion')
 def agregarPedidos(request,id_producto):
-    print(id_producto)
-    elproducto= Producto.objects.get(pk=id_producto)
-    elusuario = User.objects.get(pk=request.user.id)
-    elperfil = Perfil.objects.get(usuario=elusuario)
-    Pedido.objects.create(producto=elproducto,perfil=elperfil)
-    
-    # pedido.save()
-    return redirect(
-        '/pedidos/pedidos/'
-    )
+    if request.user.is_superuser:    
+        return redirect(
+            '/'
+        )
+    else:
+        print(id_producto)
+        elproducto= Producto.objects.get(pk=id_producto)
+        elusuario = User.objects.get(pk=request.user.id)
+        elperfil = Perfil.objects.get(usuario=elusuario)
+        Pedido.objects.create(producto=elproducto,perfil=elperfil)
+        
+        # pedido.save()
+        return redirect(
+            '/pedidos/pedidos/'
+        )
 
 @login_required(login_url='iniciarSesion')
 def eliminarPedido(request, id_pedido):
+    if request.user.is_superuser:
+        return redirect(
+            '/'
+        )
+    else:
         pedidoEncontrado = Pedido.objects.get(pk=id_pedido)
         pedidoEncontrado.delete()
 
