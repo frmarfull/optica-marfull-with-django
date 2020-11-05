@@ -22,7 +22,7 @@ git clone https://github.com/frmarfull/optica-marfull-with-django.git		# clonar 
 cd optica		# ir a la ruta del proyecto.
 python manage.py makemigrations		# Crear archivos de las migraciones de la base de datos.
 python manage.py migrate		# Crear las tablas de la base de datos.
-python manage.py collectstatic		# Crear archivos estáticos.
+python manage.py createsuperuser # Esto es para crear un usuario admin que maneja inventario
 python manage.py runserver		# Arrancar el proyecto.
 ```
 3. En un navegador (Google Chrome, Mozilla Firefox, Opera, Edge, etc), ir a `http://127.0.0.1:8000/` para acceder al proyecto.
@@ -51,8 +51,7 @@ Esto es sólo a modo de ejemplo, se recomienda jamás usar estas credenciales pa
 - [x] Crear los módulos de autenticación, verificación y autorización.
 - [x] Añadir las aplicaciones al proyecto.
 - [x] Adaptar la SWA (Single Web Aplication) y optimizar el código usando Django.
-- [ ] Descansar y esperar lo mejor pues todo esfuerzo tiene su recompensa. :+1:
 - [x] App de Cuentas completa
 - [x] App de Productos completa
-- [ ] App de Pedidos completa
-- [ ] Harakiri en caso de
+- [x] App de Pedidos completa
+
