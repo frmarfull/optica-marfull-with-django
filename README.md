@@ -50,6 +50,9 @@ Esto es sólo a modo de ejemplo, se recomienda jamás usar estas credenciales pa
 - [ ] Añadir capturas de pantalla al archivo 'README.md'
 - [x] Crear los módulos de autenticación, verificación y autorización.
 - [x] Añadir las aplicaciones al proyecto.
-- [ ] Adaptar la SWA (Single Web Aplication) y optimizar el código usando Django.
+- [x] Adaptar la SWA (Single Web Aplication) y optimizar el código usando Django.
 - [ ] Descansar y esperar lo mejor pues todo esfuerzo tiene su recompensa. :+1:
-	
+- [x] App de Cuentas completa
+- [x] App de Productos completa
+- [ ] App de Pedidos completa
+- [ ] Harakiri en caso de

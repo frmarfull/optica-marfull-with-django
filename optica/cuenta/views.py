@@ -100,8 +100,7 @@ def listar_producto(request):
 def modificar_producto(request):
     return render(request,'modificar_producto.html')
                                                                                                                                                         
-def solicitar(request): 
-    return render(request,'solicitar.html')
+
 
 
 def salir(request):
