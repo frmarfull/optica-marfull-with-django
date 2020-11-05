@@ -35,7 +35,7 @@ def registroUsuario(request):
                 messages.SUCCESS,
                 'Usuario registrado con éxito :D'
             )
-            return redirect('/inicio/')
+            return redirect('/')
         context = {
         'formulario1':formulario1,
         'formulario2':formulario2
